@@ -6,14 +6,15 @@ import (
 	"net/http"
 	"os"
 
-	_ "github.com/go-sql-driver/mysql" // New import
+	_ "github.com/go-sql-driver/mysql"
+	"zzz1.org/snippetbox/internal/models"
 )
 
 // Application wide dependecies
 type application struct {
 	errorLog *log.Logger
 	infoLog  *log.Logger
-	db       *sql.DB
+	snippets *models.SnippetModel
 }
 
 func openDB(dsn string) (*sql.DB, error) {
@@ -42,7 +43,7 @@ func main() {
 	app := &application{
 		errorLog: errorLog,
 		infoLog:  log.New(os.Stderr, "INFO\t", log.Ldate|log.Ltime|log.Lshortfile),
-		db:       db,
+		snippets:       &models.SnippetModel{DB: db},
 	}
 
 	srv := &http.Server{

@@ -12,6 +12,8 @@ services:
     environment:
       - ADDRESS=:4000
       - DSN=web:mFyikZKtBNiuGLGahsHnPk3rt@tcp(snippetBoxDB:3306)/snippetbox?parseTime=true
+    ports:
+      - 8081:4000
   db:
     container_name: snippetBoxDB
     image: mysql:8.0-bookworm
