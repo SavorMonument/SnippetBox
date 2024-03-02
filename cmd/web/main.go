@@ -19,8 +19,8 @@ func main() {
 	flag.Parse()
 
 	app := &application{
-		errorLog: log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime),
-		infoLog:  log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile),
+		errorLog: log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime),
+		infoLog:  log.New(os.Stderr, "INFO\t", log.Ldate|log.Ltime|log.Lshortfile),
 	}
 
 	srv := &http.Server{
