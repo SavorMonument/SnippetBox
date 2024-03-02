@@ -23,6 +23,9 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: oZrCYn8J31VrxftQcPwtGNOe0
+      MYSQL_DATABASE: snippetbox 
+      MYSQL_USER: web
+      MYSQL_PASSWORD: mFyikZKtBNiuGLGahsHnPk3rt
     volumes:
       - ./db:/var/lib/mysql
   adminer:
