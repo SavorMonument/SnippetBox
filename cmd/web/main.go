@@ -43,7 +43,7 @@ func main() {
 	app := &application{
 		errorLog: errorLog,
 		infoLog:  log.New(os.Stderr, "INFO\t", log.Ldate|log.Ltime|log.Lshortfile),
-		snippets:       &models.SnippetModel{DB: db},
+		snippets: &models.SnippetModel{DB: db},
 	}
 
 	srv := &http.Server{
