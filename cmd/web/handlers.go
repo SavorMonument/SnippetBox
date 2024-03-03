@@ -90,5 +90,20 @@ func (app *application) viewSnippet(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	fmt.Fprintf(w, "%+v", snippet)
+	files := []string{
+		"./ui/html/base.layout.tmpl",
+		"./ui/html/footer.partial.tmpl",
+		"./ui/html/pages/view.tmpl",
+	}
+
+  ts, err := template.ParseFiles(files...)
+  if err != nil {
+    app.serverError(w, err)
+    return
+  }
+
+  err = ts.ExecuteTemplate(w, "base", snippet)
+  if err != nil {
+    app.serverError(w, err)
+  }
 }
